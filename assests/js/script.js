@@ -30,3 +30,28 @@ reset button to be able to draw again
 
 
 */
+
+var getDndApi = function () {
+  var dndApi = "https://api.open5e.com/magicitems/?search=things";
+
+  //api call
+  fetch(dndApi).then(function (response) {
+    response.json().then(function (data) {
+      var cardDescriptions = data.results[0].desc;
+      console.log(cardDescriptions);
+      splitResonse(cardDescriptions);
+    });
+  });
+};
+
+var splitResonse = function (cardDescriptions) {
+  // original string
+  var str = cardDescriptions;
+  //split string into array
+  var arr = str.split("**_");
+  console.log(arr);
+
+  // split data at **_
+};
+
+getDndApi();
