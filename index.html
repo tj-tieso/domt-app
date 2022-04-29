@@ -11,25 +11,31 @@
     />
     <title>DOMT</title>
   </head>
-  <body>
-    <header>
-      <div>
-        <h5 class="" id="card-holders">Past Card Holder</h5>
+  <body class="has-background-dark has-text-light">
+    <header class="">
+      <div class="columns">
+        <h5 class="column is-12 has-text-left" id="card-holders">
+          Past Card Holder
+        </h5>
       </div>
-      <div>
-        <h1>Dev Of Many Things</h1>
+      <div class="columns">
+        <h1 class="column has-text-centered is-size-1 has-text-weight-bold">
+          Dev Of Many Things
+        </h1>
       </div>
     </header>
 
-    <section>
-      <div>
-        <h2>Deck Of Many Things</h2>
+    <section class="has-text-centered">
+      <div class="columns">
+        <h2 class="column is-12 is-size-1 has-text-weight-bold">
+          Deck Of Many Things
+        </h2>
       </div>
-      <div>
-        <h3>What is the Deck of many things?</h3>
+      <div class="columns">
+        <h3 class="column is-12 is-size-4">What is the Deck of many things?</h3>
       </div>
-      <div>
-        <p>
+      <div class="columns is-flex is-justify-content-center">
+        <p class="column is-6">
           Text here with info and maybe a little back story about the Deck of
           Many Things like when it was introduced, story behind it, number of
           cards, how it works, instructions, idk anything else we want to put
@@ -42,16 +48,32 @@
         </form>
       </div>
       <div>
-        <h4>How Many Cards Would You Like To Draw?</h4>
+        <h4>Choose the deck you would like to use!</h4>
       </div>
+      <div class="dropdown is-active">
+        <div class="dropdown-trigger">
+          <button
+            class="button"
+            aria-haspopup="true"
+            aria-controls="dropdown-menu"
+          >
+            <span>Select Deck</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <!--div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a class="dropdown-item"> Dropdown item </a>
+            <a class="dropdown-item"> Other dropdown item </a>
+          </div>
+        </div-->
+      </div>
+      <div id="deck-text">(Place Holder)</div>
       <div>
         <form action="">
-          <input
-            type="number"
-            id="card-number"
-            name="fcards"
-            value="Enter 1 threw 13"
-          />
+          <input type="number" id="card-number" name="fcards" value="" />
         </form>
       </div>
       <div>
