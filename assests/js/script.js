@@ -1,3 +1,10 @@
+var drawbtnEl = document.querySelector("#draw-btn");
+var nameTextEl = document.querySelector("#name");
+var nameErrorContainerEl = document.querySelector("#name-error-container");
+var numberOfCardsEl = document.querySelector("#card-number");
+var numberErrorContainerEl = document.querySelector("#number-error-container");
+var deckText = document.querySelector("#deck-text");
+
 // Pseudo code for Trevor
 
 /*
@@ -30,3 +37,27 @@ reset button to be able to draw again
 
 
 */
+var drawSubmitHandler = function (event) {
+  event.preventDefault();
+  //gets name from form
+  var playerName = nameTextEl.value.trim();
+  nameTextEl.value = "";
+  if (playerName) {
+    nameErrorContainerEl.innerHTML = "";
+  } else {
+    nameErrorContainerEl.innerHTML = "Please Enter Name!";
+    return;
+  }
+
+  var CardNumber = numberOfCardsEl.value.trim();
+  numberOfCardsEl.value = "";
+  if (CardNumber) {
+    numberErrorContainerEl.innerHTML = "";
+  } else {
+    numberErrorContainerEl.innerHTML =
+      "Please Enter The Number of Cards You Would Like to Draw!";
+    return;
+  }
+};
+
+drawbtnEl.addEventListener("click", drawSubmitHandler);

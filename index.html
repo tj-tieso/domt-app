@@ -43,41 +43,51 @@
         </p>
       </div>
       <div>
-        <form action="">
-          <input type="text" id="name" name="fname" value="Enter Name Here" />
-        </form>
-      </div>
-      <div>
-        <h4>Choose the deck you would like to use!</h4>
-      </div>
-      <div class="dropdown is-active">
-        <div class="dropdown-trigger">
-          <button
-            class="button"
-            aria-haspopup="true"
-            aria-controls="dropdown-menu"
-          >
-            <span>Select Deck</span>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
-        <!--div class="dropdown-menu" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
-            <a class="dropdown-item"> Dropdown item </a>
-            <a class="dropdown-item"> Other dropdown item </a>
+        <form>
+          <div>
+            <div id="name-error-container" class="error-msg"></div>
+            <input
+              type="text"
+              id="name"
+              name="fname"
+             placeholder="Enter Name Here"
+            />
           </div>
-        </div-->
-      </div>
-      <div id="deck-text">(Place Holder)</div>
-      <div>
-        <form action="">
-          <input type="number" id="card-number" name="fcards" value="" />
+  
+          <div>
+            <h4>Choose the deck you would like to use!</h4>
+          </div>
+          <div class="dropdown is-active">
+           <div class="dropdown-trigger">
+              <button
+               class="button"
+               aria-haspopup="true"
+               aria-controls="dropdown-menu"
+                >
+               <span>Select Deck</span>
+               <span class="icon is-small">
+                 <i class="fas fa-angle-down" aria-hidden="true"></i>
+               </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <!--div class="dropdown-content">
+                <a href="#" class="dropdown-item" id="13-card">13 Card Deck</a>
+                <a href="#" class="dropdown-item" id="22-card">22 Card Deck</a>
+              </div-->
+           </div>
+         </div>
+         <div id="deck-text">(Place Holder)</div>
+         <div id="number-error-container" class="error-msg"></div>
+            <div>
+              <form action="">
+              <input type="number" id="card-number" name="fcards" value="" />
+           </div>
+         </div>
+         <div>
+            <button type="submit" class="button is-primary" id="draw-btn">Draw</button>
+         </div> 
         </form>
-      </div>
-      <div>
-        <button class="button is-primary">Draw</button>
       </div>
     </section>
 
