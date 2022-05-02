@@ -55,8 +55,8 @@ var deckTypeChange = function (event) {
 
 var drawSubmitHandler = function (event) {
   event.preventDefault();
-  //gets name from form
 
+  //gets name from form
   var playerName = nameTextEl.value.trim();
   nameTextEl.value = "";
   if (playerName) {
@@ -65,6 +65,7 @@ var drawSubmitHandler = function (event) {
     nameErrorContainerEl.innerHTML = "Please Enter Name!";
   }
 
+  // gets the number of cards from the form
   var CardNumber = numberOfCardsEl.value.trim();
   numberOfCardsEl.value = "";
   if (CardNumber) {
@@ -74,16 +75,14 @@ var drawSubmitHandler = function (event) {
       "Please Enter The Number of Cards You Would Like to Draw!";
   }
 
-  var li = document.createElement("li");
-
+  //appends the card li to html
   for (var i = 0; i < CardNumber; i++) {
-    cardsParentUl.appendChild(li);
-    li.setAttribute("id", i);
+    console.log(i);
+    var li = document.createElement("li");
+    li.setAttribute("id", "card-num-" + i);
     li.textContent = "this is li number" + i;
+    cardsParentUl.appendChild(li);
   }
 };
 
 drawbtnEl.addEventListener("click", drawSubmitHandler);
-
-//cant get this event to work?
-//deckSelectionEl.addEventListener("click", deckTypeChange);
