@@ -6,6 +6,8 @@ var numberErrorContainerEl = document.querySelector("#number-error-container");
 var deckText = document.querySelector("#deck-text");
 var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
+var playerNameTextEl = document.querySelector("#name-text");
+var nameAppendEl = document.querySelector("#name-append");
 
 // Pseudo code for Trevor
 
