@@ -8,6 +8,7 @@ var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
 var playerNameTextEl = document.querySelector("#name-text");
 var nameAppendEl = document.querySelector("#name-append");
+var drawChoice = document.querySelector("#draw-choice");
 
 // Pseudo code for Trevor
 
@@ -43,16 +44,15 @@ reset button to be able to draw again
 */
 
 // trying to get the text from the event when it is changed
+
 var deckTypeChange = function (event) {
-  deckSelectionEl = function () {
-    var length = deckSelectionEl.children.length;
-    console.log(length);
-    for (var i = 0; i < length; i++) {
-      if (deckSelectionEl.children[i].selected) {
-        alert(deckSelectionEl.children[i].text);
-      }
-    }
-  };
+  //Get select object
+  var deckInfo = deckSelectionEl.value.trim();
+  if (deckInfo == 13) {
+    deckText.innerHTML = "Choose The Number of Cards You Would like to Draw";
+    drawChoice.innerHTML = "Choose Between 1 and 13";
+  }
+  console.log(deckInfo);
 };
 
 var drawSubmitHandler = function (event) {
@@ -63,6 +63,10 @@ var drawSubmitHandler = function (event) {
   nameTextEl.value = "";
   if (playerName) {
     nameErrorContainerEl.innerHTML = "";
+    playerNameTextEl.innerHTML = "Welcome player text here";
+    //player name not appending needs fixed
+    console.log(playerName);
+    nameAppendEl.innerHTML = playerName;
   } else {
     nameErrorContainerEl.innerHTML = "Please Enter Name!";
   }
@@ -88,3 +92,4 @@ var drawSubmitHandler = function (event) {
 };
 
 drawbtnEl.addEventListener("click", drawSubmitHandler);
+deckSelectionEl.addEventListener("change", deckTypeChange);
