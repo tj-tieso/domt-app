@@ -56,7 +56,6 @@ var cards = [
     name: "The Void",
     desc: "This black card Spells Disaster. Your soul is drawn from your body and contained in an object in a place of the DM's choice. One or more powerful beings guard the place. While your soul is trapped in this way, your body is Incapacitated. A wish spell can't restore your soul, but the spell reveals the Location of the object that holds it. You draw no more cards.",
   },
-  // api cards here
 ];
 
 var getDndApi = function () {
@@ -68,27 +67,25 @@ var getDndApi = function () {
       // console.log(data);
       var cardDescriptions = data.results[0].desc;
       // console.log(cardDescriptions);
-      splitResonse(cardDescriptions);
+      var tempArr = cardDescriptions.split("**_");
+      // console.log(tempArr);
+      splitResonse(tempArr);
     });
   });
 };
 
-var splitResonse = function (cardDescriptions) {
-  //split string into array
-  var tempArr = cardDescriptions.split("**_");
-  // console.log(tempArr);
-
-  // split data at "_**. " , assign card name and description a data attr
-  var objects = {};
-
+var splitResonse = function (tempArr) {
+  // split data at "_**. " , assign card name and description
   for (var i = 1; i < tempArr.length; i++) {
     var test = tempArr[i].split("_**. ");
-    objects[i] = {
-      name: test[0],
-      desc: test[1],
-    };
+    // console.log(test);
+    cards.unshift(
+      (test[i] = {
+        name: test[0],
+        desc: test[1],
+      })
+    );
   }
-  cards.push(objects);
   console.log(cards);
 };
 
