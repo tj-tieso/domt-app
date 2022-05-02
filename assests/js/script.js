@@ -5,6 +5,7 @@ var numberOfCardsEl = document.querySelector("#card-number");
 var numberErrorContainerEl = document.querySelector("#number-error-container");
 var deckText = document.querySelector("#deck-text");
 var deckSelectionEl = document.querySelector("#choose-deck");
+var cardsParentUl = document.querySelector("#ul-cards");
 
 // Pseudo code for Trevor
 
@@ -38,6 +39,8 @@ reset button to be able to draw again
 
 
 */
+
+// trying to get the text from the event when it is changed
 var deckTypeChange = function (event) {
   deckSelectionEl = function () {
     var length = deckSelectionEl.children.length;
@@ -53,13 +56,13 @@ var deckTypeChange = function (event) {
 var drawSubmitHandler = function (event) {
   event.preventDefault();
   //gets name from form
+
   var playerName = nameTextEl.value.trim();
   nameTextEl.value = "";
   if (playerName) {
     nameErrorContainerEl.innerHTML = "";
   } else {
     nameErrorContainerEl.innerHTML = "Please Enter Name!";
-    return;
   }
 
   var CardNumber = numberOfCardsEl.value.trim();
@@ -69,14 +72,18 @@ var drawSubmitHandler = function (event) {
   } else {
     numberErrorContainerEl.innerHTML =
       "Please Enter The Number of Cards You Would Like to Draw!";
-    return;
   }
 
-  console.log(playerName);
-  console.log(SelectDeckType);
-  console.log(CardNumber);
-  console.log(deckSelectionEl);
+  var li = document.createElement("li");
+
+  for (var i = 0; i < CardNumber; i++) {
+    cardsParentUl.appendChild(li);
+    li.setAttribute("id", i);
+    li.textContent = "this is li number" + i;
+  }
 };
 
 drawbtnEl.addEventListener("click", drawSubmitHandler);
-deckSelectionEl.addEventListener("click", deckTypeChange);
+
+//cant get this event to work?
+//deckSelectionEl.addEventListener("click", deckTypeChange);
