@@ -30,6 +30,34 @@ reset button to be able to draw again
 
 
 */
+var cards = [
+  // missing cards from API
+  {
+    name: "Star",
+    desc: "Increase one of your Ability Scores by 2. The score can exceed 20 but can't exceed 24.",
+  },
+  {
+    name: "Sun",
+    desc: " You gain 50,000 XP, and a wondrous item (which the DM determines randomly) appears in your hands.",
+  },
+  {
+    name: "Talons",
+    desc: "Every magic item you wear or carry disintegrates. Artifacts in your possession aren't destroyed but do Vanish.",
+  },
+  {
+    name: "Throne",
+    desc: "You gain proficiency in the Persuasion skill, and you double your Proficiency Bonus on checks made with that skill. In addition, you gain rightful ownership of a small keep somewhere in the world. However, the keep is currently in the hands of Monsters, which you must clear out before you can claim the keep as. yours.",
+  },
+  {
+    name: "Vizier",
+    desc: "At any time you choose within one year of drawing this card, you can ask a question in meditation and mentally receive a truthful answer to that question. Besides information, the answer helps you solve a puzzling problem or other dilemma. In other words, the knowledge comes with Wisdom on how to apply it.",
+  },
+  {
+    name: "The Void",
+    desc: "This black card Spells Disaster. Your soul is drawn from your body and contained in an object in a place of the DM's choice. One or more powerful beings guard the place. While your soul is trapped in this way, your body is Incapacitated. A wish spell can't restore your soul, but the spell reveals the Location of the object that holds it. You draw no more cards.",
+  },
+  // api cards here
+];
 
 var getDndApi = function () {
   var dndApi = "https://api.open5e.com/magicitems/?search=things";
@@ -37,21 +65,31 @@ var getDndApi = function () {
   //api call
   fetch(dndApi).then(function (response) {
     response.json().then(function (data) {
+      // console.log(data);
       var cardDescriptions = data.results[0].desc;
-      console.log(cardDescriptions);
+      // console.log(cardDescriptions);
       splitResonse(cardDescriptions);
     });
   });
 };
 
 var splitResonse = function (cardDescriptions) {
-  // original string
-  var str = cardDescriptions;
   //split string into array
-  var arr = str.split("**_");
-  console.log(arr);
+  var tempArr = cardDescriptions.split("**_");
+  // console.log(tempArr);
 
-  // split data at **_
+  // split data at "_**. " , assign card name and description a data attr
+  var objects = {};
+
+  for (var i = 1; i < tempArr.length; i++) {
+    var test = tempArr[i].split("_**. ");
+    objects[i] = {
+      name: test[0],
+      desc: test[1],
+    };
+  }
+  cards.push(objects);
+  console.log(cards);
 };
 
 getDndApi();
