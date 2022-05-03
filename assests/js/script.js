@@ -64,10 +64,9 @@ var getDndApi = function () {
   //api call
   fetch(dndApi).then(function (response) {
     response.json().then(function (data) {
-      // console.log(data);
       var cardDescriptions = data.results[0].desc;
-      // console.log(cardDescriptions);
-      var tempArr = cardDescriptions.split("**_");
+      console.log(cardDescriptions);
+      var tempArr = cardDescriptions.split("**_").reverse();
       // console.log(tempArr);
       splitResonse(tempArr);
     });
@@ -76,7 +75,7 @@ var getDndApi = function () {
 
 var splitResonse = function (tempArr) {
   // split data at "_**. " , assign card name and description
-  for (var i = 1; i < tempArr.length; i++) {
+  for (var i = 0; i < 16; i++) {
     var test = tempArr[i].split("_**. ");
     // console.log(test);
     cards.unshift(
