@@ -4,11 +4,11 @@
 
 https://api.open5e.com/magicitems/
 
-pull from the dnd api
+pull from the dnd api (check)
 
-pull item description
+pull item description (check)
 
-organize description
+organize description (check)
 
 set up object based on the playing card (only 13 or 22 cards based on selection)
 
@@ -30,7 +30,7 @@ reset button to be able to draw again
 
 
 */
-var cards = [
+var cardsArr = [
   // missing cards from API
   {
     name: "Star",
@@ -65,7 +65,7 @@ var getDndApi = function () {
   fetch(dndApi).then(function (response) {
     response.json().then(function (data) {
       var cardDescriptions = data.results[0].desc;
-      console.log(cardDescriptions);
+      // console.log(cardDescriptions);
       var tempArr = cardDescriptions.split("**_").reverse();
       // console.log(tempArr);
       splitResonse(tempArr);
@@ -76,16 +76,16 @@ var getDndApi = function () {
 var splitResonse = function (tempArr) {
   // split data at "_**. " , assign card name and description
   for (var i = 0; i < 16; i++) {
-    var test = tempArr[i].split("_**. ");
+    var cards = tempArr[i].split("_**. ");
     // console.log(test);
-    cards.unshift(
-      (test[i] = {
-        name: test[0],
-        desc: test[1],
+    cardsArr.unshift(
+      (cards[i] = {
+        name: cards[0],
+        desc: cards[1],
       })
     );
   }
-  console.log(cards);
+  console.log(cardsArr);
 };
 
 getDndApi();
