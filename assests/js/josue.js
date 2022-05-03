@@ -2,8 +2,7 @@
 var deckId = "";
 
 var deckFetch = function () {
-  var deckUrl =
-    "http://deckofcardsapi.com/api/deck/new/shuffle/?cards=AS,2S,KS,AD,2D,KD,AC,2C,KC,AH,2H,KH,X1,X2";
+  var deckUrl = "http://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
 
   // make a fetch request to deck of cards api
   fetch(deckUrl).then(function (response) {
@@ -29,7 +28,7 @@ var deckShuffle = function (data) {
     // if response was successful
     if (response.ok) {
       response.json().then(function (data) {
-        deckSet(data);
+        deckEmpty(data);
       });
     } else {
       alert("Error: card API not found");
@@ -38,14 +37,38 @@ var deckShuffle = function (data) {
 };
 
 // fetch request to draw all cards and only set the relevant cards back to the deck
+var deckEmpty = function (data) {
+  deckId = data.deck_id;
+
+  var deckDrawUrl =
+    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=54";
+
+  fetch(deckDrawUrl).then(function (response) {
+    // request was successful
+    if (response.ok) {
+      response.json().then(function (data) {
+        deckSet(data);
+      });
+    } else {
+      alert("Error: card API not found");
+    }
+  });
+};
+
 var deckSet = function (data) {
-  deckId = data.remaining;
+  deckId = data.deck_id;
 
-  console.log(deckId);
-
-  //   var deckDrawUrl =
-
-  //   fetch()
+  var deckResetUrl =
+    "http://deckofcardsapi.com/api/deck/" +
+    deckId +
+    "/return/?cards=AD,KD,QD,JD,2D,AH,KH,QH,JH,2H,AC,KC,QC,JC,2C,AS,KS,QS,JS,2S,X1,X2";
+  fetch(deckResetUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        console.log(data.remaining);
+      });
+    }
+  });
 };
 
 deckFetch();
