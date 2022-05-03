@@ -1,5 +1,6 @@
 // deckId declaration
 var deckId = "";
+var cardPullArr = [];
 
 var deckFetch = function () {
   var deckUrl = "http://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
@@ -65,9 +66,33 @@ var deckSet = function (data) {
   fetch(deckResetUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(data.remaining);
+        deckDraw(data.remaining);
       });
     }
+  });
+};
+
+var deckDraw = function (cards) {
+  var amount = 10;
+  if (amount < 1 || cards < amount) {
+    console.log("Please select an appropriate amount");
+  }
+
+  var shuffleUrl =
+    "http://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/?remaining=true";
+
+  var drawUrl =
+    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount;
+
+  fetch(shuffleUrl).then(function (response) {
+    if (response.ok) {
+      fetch(drawUrl).then(function (response) {
+        response.json().then(function (cardPull) {
+          cardPullArr = cardPull.cards;
+          console.log(cardPullArr);
+        });
+      });
+    } else console.log("Error");
   });
 };
 
