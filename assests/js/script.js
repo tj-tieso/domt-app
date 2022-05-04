@@ -138,8 +138,6 @@ var drawSubmitHandler = function (event) {
   }
 
   // gets the number of cards from the form
-  var CardNumber = numberOfCardsEl.value.trim();
-  numberOfCardsEl.value = "";
 
   //appends the card li to html
 
