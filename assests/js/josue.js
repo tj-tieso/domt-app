@@ -97,3 +97,5 @@ var deckDraw = function (cards) {
 };
 
 // deckFetch();
+
+// for each in Array, search DND array for card name/description and add it to object
