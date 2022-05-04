@@ -8,7 +8,8 @@ var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
 var playerNameTextEl = document.querySelector("#name-text");
 var nameAppendEl = document.querySelector("#name-append");
-var drawChoice = document.querySelector("#draw-choice");
+var drawChoiceEl = document.querySelector("#draw-choice");
+var deckErrorContainerEl = document.querySelector("#deck-error-container");
 
 // Pseudo code for Trevor
 
@@ -50,13 +51,26 @@ var deckTypeChange = function (event) {
   var deckInfo = deckSelectionEl.value.trim();
   if (deckInfo == 13) {
     deckText.innerHTML = "Choose The Number of Cards You Would like to Draw";
-    drawChoice.innerHTML = "Choose Between 1 and 13";
+    deckErrorContainerEl.innerHTML = "";
+  } else if (deckInfo == 22) {
+    deckText.innerHTML = "Choose The Number of Cards You Would like to Draw 2";
+    deckErrorContainerEl.innerHTML = "";
+  } else {
+    deckText.innerHTML = "";
+    deckErrorContainerEl.innerHTML =
+      "Please Select the Deck you Would Like to Use";
   }
-  console.log(deckInfo);
 };
 
 var drawSubmitHandler = function (event) {
   event.preventDefault();
+
+  var deckInfo = deckSelectionEl.value.trim();
+  if (deckInfo == 1) {
+    deckText.innerHTML = "";
+    deckErrorContainerEl.innerHTML =
+      "Please Select The Deck You Would Like to Use";
+  }
 
   //gets name from form
   var playerName = nameTextEl.value.trim();
@@ -65,7 +79,6 @@ var drawSubmitHandler = function (event) {
     nameErrorContainerEl.innerHTML = "";
     playerNameTextEl.innerHTML = "Welcome player text here";
     //player name not appending needs fixed
-    console.log(playerName);
     nameAppendEl.innerHTML = playerName;
   } else {
     nameErrorContainerEl.innerHTML = "Please Enter Name!";
@@ -76,6 +89,13 @@ var drawSubmitHandler = function (event) {
   numberOfCardsEl.value = "";
   if (CardNumber) {
     numberErrorContainerEl.innerHTML = "";
+    var deckInfo = deckSelectionEl.value.trim();
+    console.log(deckInfo);
+    if (CardNumber > deckInfo && 13) {
+      drawChoiceEl.innerHTML = "Choose Between 1 and 13";
+    } else if (CardNumber > deckInfo && 22) {
+      drawChoiceEl.innerHTML = "Choose between 1 and 22";
+    }
   } else {
     numberErrorContainerEl.innerHTML =
       "Please Enter The Number of Cards You Would Like to Draw!";
