@@ -194,7 +194,7 @@ var drawSubmitHandler = function (event) {
 };
 
 var deckFetch = function () {
-  var deckUrl = "http://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
+  var deckUrl = "https://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
 
   // make a fetch request to deck of cards api
   fetch(deckUrl).then(function (response) {
@@ -215,7 +215,7 @@ var deckShuffle = function (data) {
   deckId = data.deck_id;
 
   var deckDrawnUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/";
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/";
   fetch(deckDrawnUrl).then(function (response) {
     // if response was successful
     if (response.ok) {
@@ -233,7 +233,7 @@ var deckEmpty = function (data) {
   deckId = data.deck_id;
 
   var deckDrawUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=54";
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=54";
 
   fetch(deckDrawUrl).then(function (response) {
     // request was successful
@@ -251,7 +251,7 @@ var deckSet = function (data) {
   deckId = data.deck_id;
 
   var deckResetUrl =
-    "http://deckofcardsapi.com/api/deck/" +
+    "https://deckofcardsapi.com/api/deck/" +
     deckId +
     "/return/?cards=AD,KD,QD,JD,2D,AH,KH,QH,JH,2H,AC,KC,QC,JC,2C,AS,KS,QS,JS,2S,X1,X2";
   fetch(deckResetUrl).then(function (response) {
@@ -273,10 +273,12 @@ var deckDraw = function (cards) {
   }
 
   var shuffleUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/?remaining=true";
+    "https://deckofcardsapi.com/api/deck/" +
+    deckId +
+    "/shuffle/?remaining=true";
 
   var drawUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount;
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount;
 
   fetch(shuffleUrl).then(function (response) {
     if (response.ok) {
