@@ -96,4 +96,4 @@ var deckDraw = function (cards) {
   });
 };
 
-deckFetch();
+// deckFetch();
