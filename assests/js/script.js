@@ -4,11 +4,10 @@ var nameErrorContainerEl = document.querySelector("#name-error-container");
 var numberOfCardsEl = document.querySelector("#card-number");
 var numberErrorContainerEl = document.querySelector("#number-error-container");
 var deckText = document.querySelector("#deck-text");
+var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
 var playerNameTextEl = document.querySelector("#name-text");
 var nameAppendEl = document.querySelector("#name-append");
-var drawChoiceEl = document.querySelector("#draw-choice");
-var deckErrorContainerEl = document.querySelector("#deck-error-container");
 var CardNumber = "";
 
 // deckId declaration
@@ -89,17 +88,42 @@ var splitResonse = function (tempArr) {
   // split data at "_**. " , assign card name and description
   for (var i = 0; i < 16; i++) {
     var cards = tempArr[i].split("_**. ");
-    // console.log(cards);
+
+    var cardCodes = [
+      "AD",
+      "KD",
+      "QD",
+      "JD",
+      "2D",
+      "AH",
+      "KH",
+      "QH",
+      "JH",
+      "2H",
+      "AC",
+      "KC",
+      "QC",
+      "JC",
+      "2C",
+      "AS",
+      "KS",
+      "QS",
+      "JS",
+      "2S",
+      "X1",
+      "X2",
+    ];
 
     // add cards from API to cardsArr = []
     cardArr.unshift(
       (cards[i] = {
         name: cards[0],
         desc: cards[1],
+        code: cardCodes[i],
       })
     );
   }
-  // console.log(cardArr);
+  console.log(cardArr);
   createDeck13(cardArr);
 };
 
@@ -122,6 +146,19 @@ var createDeck13 = function (cardArr) {
   cardArr2.push(deck13Arr);
 };
 
+// trying to get the text from the event when it is changed
+var deckTypeChange = function (event) {
+  deckSelectionEl = function () {
+    var length = deckSelectionEl.children.length;
+    console.log(length);
+    for (var i = 0; i < length; i++) {
+      if (deckSelectionEl.children[i].selected) {
+        alert(deckSelectionEl.children[i].text);
+      }
+    }
+  };
+};
+
 var drawSubmitHandler = function (event) {
   event.preventDefault();
 
@@ -130,31 +167,25 @@ var drawSubmitHandler = function (event) {
   nameTextEl.value = "";
   if (playerName) {
     nameErrorContainerEl.innerHTML = "";
-    playerNameTextEl.innerHTML = "Welcome player text here";
-    //player name not appending needs fixed
-    nameAppendEl.innerHTML = playerName;
   } else {
     nameErrorContainerEl.innerHTML = "Please Enter Name!";
   }
 
   // gets the number of cards from the form
+  CardNumber = numberOfCardsEl.value.trim();
 
-  //appends the card li to html
-
-  // var element = cardPullArr;
-  // for (var i = 0; i < CardNumber; i++) {
-  //   console.log(i);
-  //   var li = document.createElement("li");
-  //   li.setAttribute("id", "cards card-num-" + i);
-  //   //li.setAttribute("img");
-  //   li.innerHTML = element[i].image;
-  //   cardsParentUl.appendChild(li);
-  // }
+  numberOfCardsEl.value = "";
+  if (CardNumber) {
+    numberErrorContainerEl.innerHTML = "";
+  } else {
+    numberErrorContainerEl.innerHTML =
+      "Please Enter The Number of Cards You Would Like to Draw!";
+  }
   deckFetch();
 };
 
 var deckFetch = function () {
-  var deckUrl = "http://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
+  var deckUrl = "https://deckofcardsapi.com/api/deck/new/?jokers_enabled=true";
 
   // make a fetch request to deck of cards api
   fetch(deckUrl).then(function (response) {
@@ -175,7 +206,7 @@ var deckShuffle = function (data) {
   deckId = data.deck_id;
 
   var deckDrawnUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/";
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/";
   fetch(deckDrawnUrl).then(function (response) {
     // if response was successful
     if (response.ok) {
@@ -193,7 +224,7 @@ var deckEmpty = function (data) {
   deckId = data.deck_id;
 
   var deckDrawUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=54";
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=54";
 
   fetch(deckDrawUrl).then(function (response) {
     // request was successful
@@ -211,7 +242,7 @@ var deckSet = function (data) {
   deckId = data.deck_id;
 
   var deckResetUrl =
-    "http://deckofcardsapi.com/api/deck/" +
+    "https://deckofcardsapi.com/api/deck/" +
     deckId +
     "/return/?cards=AD,KD,QD,JD,2D,AH,KH,QH,JH,2H,AC,KC,QC,JC,2C,AS,KS,QS,JS,2S,X1,X2";
   fetch(deckResetUrl).then(function (response) {
@@ -224,16 +255,21 @@ var deckSet = function (data) {
 };
 
 var deckDraw = function (cards) {
-  var amount = 10;
+  var amount = CardNumber;
+
+  console.log(CardNumber);
+
   if (amount < 1 || cards < amount) {
     console.log("Please select an appropriate amount");
   }
 
   var shuffleUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/shuffle/?remaining=true";
+    "https://deckofcardsapi.com/api/deck/" +
+    deckId +
+    "/shuffle/?remaining=true";
 
   var drawUrl =
-    "http://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount;
+    "https://deckofcardsapi.com/api/deck/" + deckId + "/draw/?count=" + amount;
 
   fetch(shuffleUrl).then(function (response) {
     if (response.ok) {
@@ -257,7 +293,7 @@ var deckDraw = function (cards) {
 
 drawbtnEl.addEventListener("click", drawSubmitHandler);
 
-console.log(cardArr2);
-console.log(cardArr);
+// console.log(cardArr2);
+// console.log(cardArr);
 
 getDndApi();
