@@ -88,17 +88,42 @@ var splitResonse = function (tempArr) {
   // split data at "_**. " , assign card name and description
   for (var i = 0; i < 16; i++) {
     var cards = tempArr[i].split("_**. ");
-    // console.log(cards);
+
+    var cardCodes = [
+      "AD",
+      "KD",
+      "QD",
+      "JD",
+      "2D",
+      "AH",
+      "KH",
+      "QH",
+      "JH",
+      "2H",
+      "AC",
+      "KC",
+      "QC",
+      "JC",
+      "2C",
+      "AS",
+      "KS",
+      "QS",
+      "JS",
+      "2S",
+      "X1",
+      "X2",
+    ];
 
     // add cards from API to cardsArr = []
     cardArr.unshift(
       (cards[i] = {
         name: cards[0],
         desc: cards[1],
+        code: cardCodes[i],
       })
     );
   }
-  // console.log(cardArr);
+  console.log(cardArr);
   createDeck13(cardArr);
 };
 
