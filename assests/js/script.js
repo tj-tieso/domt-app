@@ -1,36 +1,32 @@
-// Pseudo code for Trevor
+// https://api.open5e.com/magicitems/
 
-/*
+// pull from the dnd api (check)
 
-https://api.open5e.com/magicitems/
+// pull item description (check)
 
-pull from the dnd api (check)
+// organize description (check)
 
-pull item description (check)
+// set up object based on the playing card (only 13 or 22 cards based on selection)
 
-organize description (check)
+// create element with data-deck and a 13- or 22-card class
 
-set up object based on the playing card (only 13 or 22 cards based on selection)
+// append element to DOM based on selected card draw
 
-create element with data-deck and a 13- or 22-card class
+// click to flip, only on hidden. Do nothing on click when card is already shown.
 
-append element to DOM based on selected card draw
+// leave ability to summon modal again for details
 
-click to flip, only on hidden. Do nothing on click when card is already shown.
+// save number of cards drawn and which cards are flipped to localStorage
 
-leave ability to summon modal again for details
+// when card amount is selected, then we loop through n number numbers
 
-save number of cards drawn and which cards are flipped to localStorage
+// check figure for too many or too little cards selected (1-13/1-22)
 
-when card amount is selected, then we loop through n number numbers
+// reset button to be able to draw again
 
-check figure for too many or too little cards selected (1-13/1-22)
+var cardArr2 = [];
 
-reset button to be able to draw again
-
-
-*/
-var cardsArr = [
+var cardArr = [
   // missing cards from API
   {
     name: "Star",
@@ -77,15 +73,40 @@ var splitResonse = function (tempArr) {
   // split data at "_**. " , assign card name and description
   for (var i = 0; i < 16; i++) {
     var cards = tempArr[i].split("_**. ");
-    // console.log(test);
-    cardsArr.unshift(
+    // console.log(cards);
+
+    // add cards from API to cardsArr = []
+    cardArr.unshift(
       (cards[i] = {
         name: cards[0],
         desc: cards[1],
       })
     );
   }
-  console.log(cardsArr);
+  // console.log(cardArr);
+  createDeck13(cardArr);
 };
+
+var createDeck13 = function (cardArr) {
+  const NAMES_TO_EXCLUDE = [
+    "Balance",
+    "Comet",
+    "Donjon",
+    "The Fates",
+    "Fool",
+    "Gem",
+    "Idiot",
+    "Talons",
+    "Vizier",
+  ];
+
+  const deck13Arr = cardArr.filter(
+    (item) => !NAMES_TO_EXCLUDE.includes(item.name)
+  );
+  cardArr2.push(deck13Arr);
+};
+
+console.log(cardArr2);
+console.log(cardArr);
 
 getDndApi();
