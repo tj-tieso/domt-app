@@ -40,110 +40,75 @@ var cardPullArr = [];
 
 // reset button to be able to draw again
 
-var cardArr2 = [];
-
-var cardArr = [
-  // missing cards from API
-  {
+var dndObject = {
+  JD: {
     name: "Star",
     desc: "Increase one of your Ability Scores by 2. The score can exceed 20 but can't exceed 24.",
   },
-  {
+  KD: {
     name: "Sun",
     desc: " You gain 50,000 XP, and a wondrous item (which the DM determines randomly) appears in your hands.",
   },
-  {
+  AC: {
     name: "Talons",
     desc: "Every magic item you wear or carry disintegrates. Artifacts in your possession aren't destroyed but do Vanish.",
   },
-  {
+  KH: {
     name: "Throne",
     desc: "You gain proficiency in the Persuasion skill, and you double your Proficiency Bonus on checks made with that skill. In addition, you gain rightful ownership of a small keep somewhere in the world. However, the keep is currently in the hands of Monsters, which you must clear out before you can claim the keep as. yours.",
   },
-  {
+  AD: {
     name: "Vizier",
     desc: "At any time you choose within one year of drawing this card, you can ask a question in meditation and mentally receive a truthful answer to that question. Besides information, the answer helps you solve a puzzling problem or other dilemma. In other words, the knowledge comes with Wisdom on how to apply it.",
   },
-  {
+  KC: {
     name: "The Void",
     desc: "This black card Spells Disaster. Your soul is drawn from your body and contained in an object in a place of the DM's choice. One or more powerful beings guard the place. While your soul is trapped in this way, your body is Incapacitated. A wish spell can't restore your soul, but the spell reveals the Location of the object that holds it. You draw no more cards.",
   },
+};
+
+var cardCodes = [
+  "JC",
+  "KS",
+  "JS",
+  "QD",
+  "JH",
+  "QH",
+  "X2",
+  "2C",
+  "2H",
+  "X1",
+  "QC",
+  "AH",
+  "QS",
+  "AS",
+  "2D",
+  "2S",
 ];
 
 var getDndApi = function () {
   var dndApi = "https://api.open5e.com/magicitems/?search=things";
   //api call
+
   fetch(dndApi).then(function (response) {
     response.json().then(function (data) {
+      // console.log(data.results);
       var cardDescriptions = data.results[0].desc;
       // console.log(cardDescriptions);
       var tempArr = cardDescriptions.split("**_").reverse();
-      // console.log(tempArr);
-      splitResonse(tempArr);
+
+      for (var i = 0; i < 16; i++) {
+        var cards = tempArr[i].split("_**. ");
+        // console.log(cards);
+        dndObject[cardCodes[i]] = {
+          cardName: cards[0],
+          desc: cards[1],
+          code: cardCodes[i],
+        };
+      }
+      console.log(dndObject);
     });
   });
-};
-
-var splitResonse = function (tempArr) {
-  // split data at "_**. " , assign card name and description
-  for (var i = 0; i < 16; i++) {
-    var cards = tempArr[i].split("_**. ");
-
-    var cardCodes = [
-      "AD",
-      "KD",
-      "QD",
-      "JD",
-      "2D",
-      "AH",
-      "KH",
-      "QH",
-      "JH",
-      "2H",
-      "AC",
-      "KC",
-      "QC",
-      "JC",
-      "2C",
-      "AS",
-      "KS",
-      "QS",
-      "JS",
-      "2S",
-      "X1",
-      "X2",
-    ];
-
-    // add cards from API to cardsArr = []
-    cardArr.unshift(
-      (cards[i] = {
-        name: cards[0],
-        desc: cards[1],
-        code: cardCodes[i],
-      })
-    );
-  }
-  console.log(cardArr);
-  createDeck13(cardArr);
-};
-
-var createDeck13 = function (cardArr) {
-  const NAMES_TO_EXCLUDE = [
-    "Balance",
-    "Comet",
-    "Donjon",
-    "The Fates",
-    "Fool",
-    "Gem",
-    "Idiot",
-    "Talons",
-    "Vizier",
-  ];
-
-  const deck13Arr = cardArr.filter(
-    (item) => !NAMES_TO_EXCLUDE.includes(item.name)
-  );
-  cardArr2.push(deck13Arr);
 };
 
 // trying to get the text from the event when it is changed
@@ -293,8 +258,5 @@ var deckDraw = function (cards) {
 };
 
 drawbtnEl.addEventListener("click", drawSubmitHandler);
-
-// console.log(cardArr2);
-// console.log(cardArr);
 
 getDndApi();
