@@ -8,6 +8,7 @@ var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
 var playerNameTextEl = document.querySelector("#name-text");
 var nameAppendEl = document.querySelector("#name-append");
+var CardNumber = "";
 
 // deckId declaration
 var deckId = "";
@@ -146,7 +147,8 @@ var drawSubmitHandler = function (event) {
   }
 
   // gets the number of cards from the form
-  var CardNumber = numberOfCardsEl.value.trim();
+  CardNumber = numberOfCardsEl.value.trim();
+
   numberOfCardsEl.value = "";
   if (CardNumber) {
     numberErrorContainerEl.innerHTML = "";
@@ -163,6 +165,7 @@ var drawSubmitHandler = function (event) {
     li.textContent = "this is li number" + i;
     cardsParentUl.appendChild(li);
   }
+  deckFetch();
 };
 
 var deckFetch = function () {
@@ -236,7 +239,10 @@ var deckSet = function (data) {
 };
 
 var deckDraw = function (cards) {
-  var amount = 10;
+  var amount = CardNumber;
+
+  console.log(CardNumber);
+
   if (amount < 1 || cards < amount) {
     console.log("Please select an appropriate amount");
   }
@@ -259,11 +265,9 @@ var deckDraw = function (cards) {
   });
 };
 
-deckFetch();
-
 drawbtnEl.addEventListener("click", drawSubmitHandler);
 
-console.log(cardArr2);
-console.log(cardArr);
+// console.log(cardArr2);
+// console.log(cardArr);
 
 getDndApi();
