@@ -128,9 +128,30 @@ var getDndApi = function () {
           code: cardCodes[i],
         };
       }
-      console.log(dndObject);
+      // console.log(dndObject);
+
+      insertDndInfo(dndObject);
     });
   });
+};
+
+var insertDndInfo = function (dndObject) {
+  // console.log(cardPullArr);
+  // console.log(dndObject["AD"]);
+
+  var cardId = document.getElementById("X1");
+  var cardId2 = document.getElementById("X2");
+
+  var cardDescinsert = dndObject["X1"].desc;
+  var cardDescinsert2 = dndObject["X2"].desc;
+
+  var cardNameInsert = dndObject["X1"].cardName;
+  var cardNameInsert2 = dndObject["X2"].cardName;
+
+  console.log(cardNameInsert, cardNameInsert2);
+
+  cardId.append(cardNameInsert, cardDescinsert);
+  cardId2.append(cardNameInsert2, cardDescinsert2);
 };
 
 // trying to get the text from the event when it is changed
@@ -244,7 +265,7 @@ var deckSet = function (data) {
 var deckDraw = function (cards) {
   var amount = CardNumber;
 
-  console.log(CardNumber);
+  // console.log(CardNumber);
 
   if (amount < 1 || cards < amount) {
     console.log("Please select an appropriate amount");
@@ -265,7 +286,7 @@ var deckDraw = function (cards) {
           cardPullArr = cardPull.cards;
           //appends the card li to html
           for (var i = 0; i < CardNumber; i++) {
-            console.log(cardPullArr[i]);
+            // console.log(cardPullArr[i]);
             var li = document.createElement("li");
             li.setAttribute("id", "card-num-" + i);
             li.setAttribute("class", "column is-2");
@@ -278,7 +299,7 @@ var deckDraw = function (cards) {
             cardsParentUl.appendChild(li);
           }
           addModalListener();
-          console.log(cardPullArr);
+          // console.log(cardPullArr);
         });
       });
     } else console.log("Error");
@@ -305,7 +326,7 @@ var addModalListener = () => {
   (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-    console.log($target);
+    // console.log($target);
 
     $trigger.addEventListener("click", () => {
       openModal($target);
