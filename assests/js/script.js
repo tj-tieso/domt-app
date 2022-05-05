@@ -281,7 +281,7 @@ var deckDraw = function (cards) {
             console.log(i);
             var li = document.createElement("li");
             li.setAttribute("id", "card-num-" + i);
-            li.textContent = cardPullArr[i].image;
+            li.innerHTML = "<img src='" + cardPullArr[i].image + "' />";
             cardsParentUl.appendChild(li);
           }
           console.log(cardPullArr);
