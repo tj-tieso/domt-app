@@ -100,6 +100,8 @@ var cardCodes = [
   "2S",
 ];
 
+debugger;
+
 var getDndApi = function () {
   var dndApi = "https://api.open5e.com/magicitems/?search=things";
   //api call
