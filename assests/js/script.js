@@ -1,15 +1,4 @@
-// click to flip, only on hidden. Do nothing on click when card is already shown.
-
-// leave ability to summon modal again for details
-
-// save number of cards drawn and which cards are flipped to localStorage
-
-// when card amount is selected, then we loop through n number numbers
-
-// check figure for too many or too little cards selected (1-13/1-22)
-
-// reset button to be able to draw again
-
+// DOM declarations
 var drawbtnEl = document.querySelector("#draw-btn");
 var nameTextEl = document.querySelector("#name");
 var nameErrorContainerEl = document.querySelector("#name-error-container");
@@ -44,7 +33,7 @@ var card20 = document.querySelector("#card-num-20");
 var card21 = document.querySelector("#card-num-21");
 var CardNumber = "";
 
-// deckId declaration
+// deckId declarations
 var deckId = "";
 var cardPullArr = [];
 
@@ -100,39 +89,29 @@ var cardCodes = [
   "2S",
 ];
 
-debugger;
-
 var getDndApi = function () {
   var dndApi = "https://api.open5e.com/magicitems/?search=things";
   //api call
 
   fetch(dndApi).then(function (response) {
     response.json().then(function (data) {
-      // console.log(data.results);
       var cardDescriptions = data.results[0].desc;
-      // console.log(cardDescriptions);
       var tempArr = cardDescriptions.split("**_").reverse();
 
       for (var i = 0; i < 16; i++) {
         var cards = tempArr[i].split("_**. ");
-        // console.log(cards);
         dndObject[cardCodes[i]] = {
           cardName: cards[0],
           desc: cards[1],
           code: cardCodes[i],
         };
       }
-      // console.log(dndObject);
-
       insertDndInfo(dndObject);
     });
   });
 };
 
 var insertDndInfo = function (dndObject) {
-  // console.log(dndObject["X1"]);
-  // console.log(dndObject["X2"]);
-
   var cardId0 = document.getElementById("AD");
   var cardId1 = document.getElementById("KD");
   var cardId2 = document.getElementById("QD");
@@ -371,7 +350,6 @@ var deckDraw = function (cards) {
             cardsParentUl.appendChild(li);
           }
           addModalListener();
-          // console.log(cardPullArr);
         });
       });
     } else console.log("Error");
@@ -398,7 +376,6 @@ var addModalListener = () => {
   (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
     const modal = $trigger.dataset.target;
     const $target = document.getElementById(modal);
-    // console.log($target);
 
     $trigger.addEventListener("click", () => {
       openModal($target);
