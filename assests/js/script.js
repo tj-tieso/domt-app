@@ -300,14 +300,16 @@ var deckDraw = function (cards) {
           cardPullArr = cardPull.cards;
           //appends the card li to html
           for (var i = 0; i < CardNumber; i++) {
-            console.log(i);
+            console.log(cardPullArr[i]);
             var li = document.createElement("li");
             li.setAttribute("id", "card-num-" + i);
             li.setAttribute("class", "column is-2");
             li.innerHTML =
               "<img src='" +
               cardPullArr[i].image +
-              "' /> <button class='js-modal-trigger' data-target='modal-js-example'>Get Card Description</button>";
+              "' /> <button class='js-modal-trigger' data-target='modal-js-example-" +
+              cardPullArr[i].code +
+              "'>Get Card Description</button>";
             cardsParentUl.appendChild(li);
           }
           addModalListener();
