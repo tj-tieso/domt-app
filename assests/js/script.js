@@ -293,7 +293,7 @@ var deckDraw = function (cards) {
             li.innerHTML =
               "<img src='" +
               cardPullArr[i].image +
-              "' /> <button class='js-modal-trigger' data-target='modal-js-example-" +
+              " 'class='cardImageBack has-background-grey' /> <button class='js-modal-trigger' data-target='modal-js-example-" +
               cardPullArr[i].code +
               "'>Get Card Description</button>";
             cardsParentUl.appendChild(li);
