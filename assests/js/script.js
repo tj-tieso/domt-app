@@ -8,6 +8,28 @@ var deckSelectionEl = document.querySelector("#choose-deck");
 var cardsParentUl = document.querySelector("#ul-cards");
 var playerNameTextEl = document.querySelector("#name-text");
 var nameAppendEl = document.querySelector("#name-append");
+var card0 = document.querySelector("#card-num-0");
+var card1 = document.querySelector("#card-num-1");
+var card2 = document.querySelector("#card-num-2");
+var card3 = document.querySelector("#card-num-3");
+var card4 = document.querySelector("#card-num-4");
+var card5 = document.querySelector("#card-num-5");
+var card6 = document.querySelector("#card-num-6");
+var card7 = document.querySelector("#card-num-7");
+var card8 = document.querySelector("#card-num-8");
+var card9 = document.querySelector("#card-num-9");
+var card10 = document.querySelector("#card-num-10");
+var card11 = document.querySelector("#card-num-11");
+var card12 = document.querySelector("#card-num-12");
+var card13 = document.querySelector("#card-num-13");
+var card14 = document.querySelector("#card-num-14");
+var card15 = document.querySelector("#card-num-15");
+var card16 = document.querySelector("#card-num-16");
+var card17 = document.querySelector("#card-num-17");
+var card18 = document.querySelector("#card-num-18");
+var card19 = document.querySelector("#card-num-19");
+var card20 = document.querySelector("#card-num-20");
+var card21 = document.querySelector("#card-num-21");
 var CardNumber = "";
 
 // deckId declaration
@@ -281,9 +303,14 @@ var deckDraw = function (cards) {
             console.log(i);
             var li = document.createElement("li");
             li.setAttribute("id", "card-num-" + i);
-            li.innerHTML = "<img src='" + cardPullArr[i].image + "' />";
+            li.setAttribute("class", "column is-2");
+            li.innerHTML =
+              "<img src='" +
+              cardPullArr[i].image +
+              "' /> <button class='js-modal-trigger' data-target='modal-js-example'>Get Card Description</button>";
             cardsParentUl.appendChild(li);
           }
+          addModalListener();
           console.log(cardPullArr);
         });
       });
@@ -291,8 +318,58 @@ var deckDraw = function (cards) {
   });
 };
 
-drawbtnEl.addEventListener("click", drawSubmitHandler);
+var addModalListener = () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add("is-active");
+  }
 
+  function closeModal($el) {
+    $el.classList.remove("is-active");
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+    console.log($target);
+
+    $trigger.addEventListener("click", () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (
+    document.querySelectorAll(
+      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
+    ) || []
+  ).forEach(($close) => {
+    const $target = $close.closest(".modal");
+
+    $close.addEventListener("click", () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener("keydown", (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) {
+      // Escape key
+      closeAllModals();
+    }
+  });
+};
+
+drawbtnEl.addEventListener("click", drawSubmitHandler);
 // console.log(cardArr2);
 // console.log(cardArr);
 

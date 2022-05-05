@@ -64,22 +64,37 @@
               <input type="number" id="card-number" name="fcards" value="" />
            </div>
          </div>
-         <div>
-            <button type="submit" class="button is-primary" id="draw-btn">Draw</button>
-         </div> 
+         
         </form>
+        <div>
+            <button type="submit" class="button is-primary" id="draw-btn">Draw</button>
+            <button class="js-modal-trigger" data-target="modal-js-example">Open JS example modal</button>
+         </div> 
       </div>
     </section>
     <section id="card-section">
       <div id="name-text">
         <div id="name-append"></div>
       </div>
-      <div id="card-holder">
-        <ul id="ul-cards">
+      <div id="card-holder" class="">
+        <ul id="ul-cards" class="columns is-flex-wrap-wrap">
 
         </ul>
       </div>
     </section>
+
+    <div id="modal-js-example" class="modal" data-="0">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>Modal JS example</p>
+      <!-- Your content -->
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
 
     <script src="./assests/js/script.js"></script>
   </body>
