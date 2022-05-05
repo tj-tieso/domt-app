@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
+    <link rel="shortcut icon" href="#" />
     <title>DOMT</title>
   </head>
   <body class="has-background-dark has-text-light">
@@ -42,10 +43,10 @@
           just trying to make more text space
         </p>
       </div>
-      <div>
+      <div >
         <form>
           <div>
-            <div id="name-error-container" class="error-msg"></div>
+            <div id="name-error-container" class="error-msg has-text-danger"></div>
             <input
               type="text"
               id="name"
@@ -55,40 +56,325 @@
           </div>
   
           <div>
-            <h4>Choose the deck you would like to use!</h4>
+            <h4 id="deck-text">Choose Between 1 and 22 cards to draw!</h4>
           </div>
-          <div id="deck-error-container" class="error-msg"></div>
-          <div class="select">
-            <select name="choose-card" id="choose-deck">
-              <option value="1" id="select-deck">Select Deck</option>
-              <option value="13" id="13-card">13 Card Deck</option>
-              <option value="22" id="22-card">22 Card Deck</option>
-            </select>
-          </div>
-         <div id="deck-text"></div>
-         <div id="number-error-container" class="error-msg"></div>
+         <div id="number-error-container" class="error-msg has-text-danger"></div>
             <div>
               <form action="">
               <input type="number" id="card-number" name="fcards" value="" />
            </div>
          </div>
-         <div>
+          <div>
             <button type="submit" class="button is-primary" id="draw-btn">Draw</button>
          </div> 
         </form>
+       
       </div>
     </section>
     <section id="card-section">
       <div id="name-text">
         <div id="name-append"></div>
       </div>
-      <div id="card-holder">
-        <ul id="ul-cards">
+      <div id="card-holder" class="">
+        <ul id="ul-cards" class="columns is-flex-wrap-wrap">
 
         </ul>
       </div>
     </section>
 
+    <div>
+      <div id="modal-js-example-AD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number AD</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number KD</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number QD</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number JD</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2D" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number 2D</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number AH</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number KH</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number QH</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number JH</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2H" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number 2H</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number AC</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number KC</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number QC</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number JC</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div>
+      <div id="modal-js-example-2C" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number 2C</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number AS</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number KS</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number QS</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div>
+      <div id="modal-js-example-JS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number JS</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2S" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number 2S</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-X1" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number X1</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-X2" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+             <p>Modal JS example number X2</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
     <script src="./assests/js/script.js"></script>
   </body>
 </html>
+
