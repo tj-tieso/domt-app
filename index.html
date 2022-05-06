@@ -5,9 +5,396 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" src="./assests/css/style.css" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="shortcut icon" href="#" />
+    <title>DOMT</title>
   </head>
-  <body>
+  <body class="has-background-dark has-text-light">
+    <header class="">
+      <div class="columns">
+        <h5 class="column is-12 has-text-left" id="card-holders">
+          <!-- Past Card Holder -->
+        </h5>
+      </div>
+      <div class="columns">
+        <h1 class="column has-text-centered is-size-1 has-text-weight-bold">
+          Deck Of Many Things
+        </h1>
+      </div>
+    </header>
+
+    <section class="has-text-centered">
+      <div class="columns">
+        <h2 class="column is-12 is-size-1 has-text-weight-bold">
+          <!-- Deck Of Many Things -->
+        </h2>
+      </div>
+      <div class="columns">
+        <h3 class="column is-12 is-size-4">What is the Deck of many things?</h3>
+      </div>
+      <div class="columns is-flex is-justify-content-center">
+        <p class="column is-6">
+          The Deck of Many Things is a powerful item found in the well know TTRPG Dungeons and Dragons. Drawing cards from the deck have a chance to yield great rewards. Though sometimes its best not to tempt fate. 
+        </p>
+      </div>
+      <div >
+        <form>
+          <div>
+            <div id="name-error-container" class="error-msg has-text-danger"></div>
+            <input
+              type="text"
+              id="name"
+              name="fname"
+             placeholder="Enter Name Here"
+            />
+          </div>
+  
+          <div>
+            <h4 id="deck-text">Choose Between 1 and 22 cards to draw!</h4>
+          </div>
+         <div id="number-error-container" class="error-msg has-text-danger"></div>
+            <div>
+              <form action="">
+              <input type="number" id="card-number" name="fcards" value="" />
+           </div>
+         </div>
+          <div>
+            <button type="submit" class="button is-primary" id="draw-btn">Draw</button>
+         </div> 
+        </form>
+       
+      </div>
+    </section>
+    <section id="card-section">
+      <div id="name-text">
+        <div id="name-append"></div>
+      </div>
+      <div id="card-holder" class="">
+        <ul id="ul-cards" class="columns is-flex-wrap-wrap">
+
+        </ul>
+      </div>
+    </section>
+  
+  <section class="dnd-info">
+
+    <div class="dnd-container"> <!--modalContainer -->
+      <div id="modal-js-example-AD" class="modal"> <!--modalExample -->
+        <div class="modal-background"></div> <!--modalBackground -->
+
+        <div class="modal-content"> <!--modalContent -->
+          <div class="box"> <!--modalBox -->
+            <h4 id="nameAD"></h4>
+            <p id="AD"></p>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameKD"></h4>
+             <p id="KD"></p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameQD"></h4>
+             <p id="QD"></p>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JD" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameJD"></h4>
+             <p id="JD"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2D" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="name2D"></h4>
+             <p id="2D"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameAH"></h4>
+             <p id="AH"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameKH"></h4>
+             <p id="KH"></p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameQH"></h4>
+             <p id="QH"></p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JH" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameJH"></h4>
+             <p id="JH"></p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2H" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="name2H"></h4>
+             <p id="2H"></p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameAC"></h4>
+             <p id="AC"></p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameKC"></h4>
+             <p id="KC"></p>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameQC"></h4>
+             <p id="QC"></p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-JC" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameJC"></h4>
+             <p id="JC"></p>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div>
+      <div id="modal-js-example-2C" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="name2C"></h4>
+             <p id="2C"></p>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-AS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameAS"></h4>
+             <p id="AS"></p>
+       
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-KS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameKS"></h4>
+             <p id="KS"></p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-QS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameQS"></h4>
+             <p id ="QS"></p>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div>
+      <div id="modal-js-example-JS" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameJS"></h4>
+             <p id="JS"></p>
+     
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-2S" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="name2S"></h4>
+             <p id="2S"></p>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-X1" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameX1"></h4>
+             <p id="X1"></p>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-js-example-X2" class="modal" data-card="0">
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+          <div class="box">
+            <h4 id="nameX2"></h4>
+             <p id="X2"></p>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assests/js/script.js"></script>
   </body>
 </html>
